@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const title = document.getElementById('project-title');
     const participant = document.getElementById('project-participant');
+    const image = document.getElementById('preview-image');
 
     function subscribeToInputEvent(id, func, item) {
         document.getElementById(id).addEventListener('input', (evt) => {
@@ -11,13 +12,29 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    function subscribeToCheckboxEvent(id, func, item) {
+        document.getElementById(id).addEventListener('change', (evt) => {
+            storeCheckbox(id, evt.target.checked);
+            return func(evt.target.checked, item);
+        });
+    }
+
     function storeItem(id, value) {
+
+    }
+
+    function storeCheckbox(id, checked) {
 
     }
 
     function restoreItem(id, func, item) {
         const element = document.getElementById(id);
         func(element.value, item);
+    }
+
+    function restoreCheckbox(id, func, item) {
+        const element = document.getElementById(id);
+        func(element.checked, item);
     }
 
     function changeText(newText, item) {
@@ -72,6 +89,14 @@ document.addEventListener('DOMContentLoaded', () => {
     subscribeToInputEvent('title-color', changeTextColor, title);
     subscribeToInputEvent('participant-color', changeTextColor, participant);
 
+    function printImage(visible, item) {
+        if (visible)
+            item.style.setProperty('visibility', 'visible', 'important');
+        else
+            item.style.visibility = null;
+    }
+    subscribeToCheckboxEvent('print-image', printImage, image);
+
     restoreItem('title', changeText, title);
     restoreItem('participant', changeText, participant);
     restoreItem('title-x', changeXPosition, title);
@@ -86,4 +111,5 @@ document.addEventListener('DOMContentLoaded', () => {
     restoreItem('participant-alignment', changeTextAlignment, participant);
     restoreItem('title-color', changeTextColor, title);
     restoreItem('participant-color', changeTextColor, participant);
+    restoreCheckbox('print-image', printImage, image);
 });

@@ -9,6 +9,7 @@
 
     <link rel="stylesheet" type="text/css" href="css/index.css">
     <link rel="stylesheet" type="text/css" href="css/print-view.css">
+    <link rel="stylesheet" type="text/css" href="css/editor-fields.css">
 
     <link rel="stylesheet" type="text/css" href="css/fontawesome.min.css">
 
@@ -50,21 +51,20 @@
         </div>
     </div>
     <div id="edit" class="column">
-        <h3>Títol</h3>
         <div class="field">
-            <label for="title">Títol</label>
+            <label for="title">Title</label>
             <input type="text" id="title" name="title">
         </div>
         <div class="field">
-            <label for="title-x">X</label>
+            <label for="title-x">Horizontal offset</label>
             <input type="range" id="title-x" name="title-x" min="0" max="100" value="0" step="0.1">
         </div>
         <div class="field">
-            <label for="title-y">Y</label>
+            <label for="title-y">Vertical offset</label>
             <input type="range" id="title-y" name="title-y" min="0" max="100" value="0" step="0.1">
         </div>
         <div class="field">
-            <label for="title-alignment">Alineat</label>
+            <label for="title-alignment">Alignment</label>
             <select id="title-alignment" name="title-alignment">
                 <option value="left">Left</option>
                 <option value="center">Center</option>
@@ -72,11 +72,11 @@
             </select>
         </div>
         <div class="field">
-            <label for="title-weight">Grossor text</label>
+            <label for="title-weight">Font weight</label>
             <input type="range" id="title-weight" name="title-weight" min="100" max="900" value="400" step="100">
         </div>
         <div class="field">
-            <label for="title-size">Tamany</label>
+            <label for="title-size">Font size</label>
             <input type="number" id="title-size" name="title-size" value="14" min="1">
         </div>
         <div class="field">
@@ -85,21 +85,20 @@
         </div>
 
         <hr>
-        <h3>Participant</h3>
         <div class="field">
             <label for="participant">Participant</label>
             <input type="text" id="participant" name="participant">
         </div>
         <div class="field">
-            <label for="participant-x">X</label>
+            <label for="participant-x">Horizontal offset</label>
             <input type="range" id="participant-x" name="participant-x" min="0" max="100" value="0" step="0.1">
         </div>
         <div class="field">
-            <label for="participant-y">Y</label>
+            <label for="participant-y">Vertical offset</label>
             <input type="range" id="participant-y" name="participant-y" min="0" max="100" value="0" step="0.1">
         </div>
         <div class="field">
-            <label for="participant-alignment">Alineat</label>
+            <label for="participant-alignment">Alignment</label>
             <select id="participant-alignment" name="participant-alignment">
                 <option value="left">Left</option>
                 <option value="center">Center</option>
@@ -107,12 +106,12 @@
             </select>
         </div>
         <div class="field">
-            <label for="participant-weight">Grossor text</label>
+            <label for="participant-weight">Font weight</label>
             <input type="range" id="participant-weight" name="participant-weight" min="100" max="900" value="400"
                    step="100">
         </div>
         <div class="field">
-            <label for="participant-size">Tamany</label>
+            <label for="participant-size">Font size</label>
             <input type="number" id="participant-size" name="participant-size" value="14" min="1">
         </div>
         <div class="field">
@@ -121,10 +120,12 @@
         </div>
 
         <hr>
-        <h3>Printing options</h3>
         <div class="field">
-            <label for="print-image">Print image</label>
+            <label>Printing options</label>
+        </div>
+        <div class="field toggle">
             <input type="checkbox" id="print-image" name="print-image">
+            <label for="print-image">Print image</label>
         </div>
     </div>
 </div>
