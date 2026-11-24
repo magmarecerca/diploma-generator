@@ -209,6 +209,7 @@ footer a {
     position: absolute;
     left: 0;
     top: 0;
+    line-height: 1;
 }
 
 .modal {
