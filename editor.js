@@ -1,36 +1,54 @@
 document.addEventListener('DOMContentLoaded', () => {
+    const localStorageNamespace = 'org.magmarecerca.dev/diploma_generator';
+
     const title = document.getElementById('project-title');
     const participant = document.getElementById('project-participant');
+
+    function subscribeToInputEvent(id, func, item) {
+        document.getElementById(id).addEventListener('input', (evt) => {
+            storeItem(id, evt.target.value);
+            return func(evt.target.value, item);
+        });
+    }
+
+    function storeItem(id, value) {
+
+    }
+
+    function restoreItem(id, func, item) {
+        const element = document.getElementById(id);
+        func(element.value, item);
+    }
 
     function changeText(newText, item) {
         item.innerHTML = newText;
     }
-    document.getElementById('title').addEventListener('input', (evt) => changeText(evt.target.value, title));
-    document.getElementById('participant').addEventListener('input', (evt) => changeText(evt.target.value, participant));
+    subscribeToInputEvent('title', changeText, title);
+    subscribeToInputEvent('participant', changeText, participant);
 
     function changeXPosition(newXPosition, item) {
         item.style.left = `${newXPosition}%`;
     }
-    document.getElementById('title-x').addEventListener('input', (evt) => changeXPosition(evt.target.value, title));
-    document.getElementById('participant-x').addEventListener('input', (evt) => changeXPosition(evt.target.value, participant));
+    subscribeToInputEvent('title-x', changeXPosition, title);
+    subscribeToInputEvent('participant-x', changeXPosition, participant);
 
     function changeYPosition(newYPosition, item) {
         item.style.top = `${newYPosition}%`;
     }
-    document.getElementById('title-y').addEventListener('input', (evt) => changeYPosition(evt.target.value, title));
-    document.getElementById('participant-y').addEventListener('input', (evt) => changeYPosition(evt.target.value, participant));
+    subscribeToInputEvent('title-y', changeYPosition, title);
+    subscribeToInputEvent('participant-y', changeYPosition, participant);
 
     function changeFontWeight(newWeight, item) {
         item.style.fontWeight = newWeight;
     }
-    document.getElementById('title-weight').addEventListener('input', (evt) => changeFontWeight(evt.target.value, title));
-    document.getElementById('participant-weight').addEventListener('input', (evt) => changeFontWeight(evt.target.value, participant));
+    subscribeToInputEvent('title-weight', changeFontWeight, title);
+    subscribeToInputEvent('participant-weight', changeFontWeight, participant);
 
     function changeFontSize(fontSize, item) {
-        item.style.fontSize = `${fontSize}px`;
+        item.style.fontSize = `${fontSize / 7}cqw`;
     }
-    document.getElementById('title-size').addEventListener('input', (evt) => changeFontSize(evt.target.value, title));
-    document.getElementById('participant-size').addEventListener('input', (evt) => changeFontSize(evt.target.value, participant));
+    subscribeToInputEvent('title-size', changeFontSize, title);
+    subscribeToInputEvent('participant-size', changeFontSize, participant);
 
     function changeTextAlignment(alignment, item) {
         switch (alignment) {
@@ -45,6 +63,19 @@ document.addEventListener('DOMContentLoaded', () => {
                 break;
         }
     }
-    document.getElementById('title-alignment').addEventListener('input', (evt) => changeTextAlignment(evt.target.value, title));
-    document.getElementById('participant-alignment').addEventListener('input', (evt) => changeTextAlignment(evt.target.value, participant));
+    subscribeToInputEvent('title-alignment', changeTextAlignment, title);
+    subscribeToInputEvent('participant-alignment', changeTextAlignment, participant);
+
+    restoreItem('title', changeText, title);
+    restoreItem('participant', changeText, participant);
+    restoreItem('title-x', changeXPosition, title);
+    restoreItem('participant-x', changeXPosition, participant);
+    restoreItem('title-y', changeYPosition, title);
+    restoreItem('participant-y', changeYPosition, participant);
+    restoreItem('title-weight', changeFontWeight, title);
+    restoreItem('participant-weight', changeFontWeight, participant);
+    restoreItem('title-size', changeFontSize, title);
+    restoreItem('participant-size', changeFontSize, participant);
+    restoreItem('title-alignment', changeTextAlignment, title);
+    restoreItem('participant-alignment', changeTextAlignment, participant);
 });
