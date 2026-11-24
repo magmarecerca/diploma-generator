@@ -84,6 +84,6 @@ document.addEventListener('DOMContentLoaded', () => {
     restoreItem('participant-size', changeFontSize, participant);
     restoreItem('title-alignment', changeTextAlignment, title);
     restoreItem('participant-alignment', changeTextAlignment, participant);
-    restoreItem('title-color', changeTextAlignment, title);
-    restoreItem('participant-color', changeTextAlignment, participant);
+    restoreItem('title-color', changeTextColor, title);
+    restoreItem('participant-color', changeTextColor, participant);
 });
