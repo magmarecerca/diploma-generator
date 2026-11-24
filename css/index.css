@@ -195,6 +195,17 @@ footer a {
 #preview img {
     max-width: 100%;
     border: 1px solid black;
+    display: block;
+}
+
+#preview .diploma-container {
+    position: relative;
+    text-align: center;
+    color: black;
+}
+
+#preview .text {
+    position: absolute;
 }
 
 .modal {
