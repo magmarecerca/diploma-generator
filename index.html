@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta http-equiv="content-language" content="en">
+    <meta name="description" content="This is a generator for Exporecerca Jove's Diplomas.">
+
+
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+    <link rel="stylesheet" type="text/css" href="css/fontawesome.min.css">
+
+    <title>Diploma Generator</title>
+</head>
+<body>
+<header>
+    <div class="first-row">
+        <div id="menu-items">
+            <div class="button" id="load-button">
+                <button><i class="fa-solid fa-folder-open"></i> Load Template</button>
+            </div>
+            <div class="button" id="save-button">
+                <button><i class="fa-solid fa-print"></i> Print</button>
+            </div>
+            <div class="button" id="reset-button">
+                <button><i class="fa-solid fa-arrows-rotate"></i> Reset</button>
+            </div>
+            <div style="border-left:2px solid #ffffff80; height: 1.7em"></div>
+            <div class="button" id="undo-button" title="Undo (Ctrl+Z)">
+                <button><i class="fa-solid fa-arrow-rotate-left"></i></button>
+            </div>
+            <div class="button" id="redo-button" title="Redo (Ctrl+Y)">
+                <button><i class="fa-solid fa-arrow-rotate-right"></i></button>
+            </div>
+        </div>
+        <div id="github"><a href="https://github.com/magmarecerca/diploma-generator" target="_blank">
+            <i class="fa-brands fa-github"></i>
+        </a></div>
+    </div>
+</header>
+
+<div id="container">
+    <div id="preview" class="column">
+        <img id="preview-image" src="test-image.png" alt="Diploma Image Template">
+    </div>
+    <div id="edit" class="column">
+        <form>
+            <div class="field">
+                <label for="title">Títol</label>
+                <input type="text" id="title" name="title">
+            </div>
+            <div class="field">
+                <label for="participant">Participant</label>
+                <input type="text" id="participant" name="participant">
+            </div>
+
+            <hr>
+            <div class="field">
+                <label for="title-x">Títol X</label>
+                <input type="range" id="title-x" name="title-x" min="0" max="100" value="0" step="0.1">
+            </div>
+            <div class="field">
+                <label for="title-y">Títol Y</label>
+                <input type="range" id="title-y" name="title-y" min="0" max="100" value="0" step="0.1">
+            </div>
+            <div class="field">
+                <label for="participant-x">Participant X</label>
+                <input type="range" id="participant-x" name="participant-x" min="0" max="100" value="0" step="0.1">
+            </div>
+            <div class="field">
+                <label for="participant-y">Participant Y</label>
+                <input type="range" id="participant-y" name="participant-y" min="0" max="100" value="0" step="0.1">
+            </div>
+
+            <hr>
+            <div class="field">
+                <label for="title-alignment">Alineat títol</label>
+                <select id="title-alignment" name="title-alignment">
+                    <option value="center">Center</option>
+                    <option value="right">Right</option>
+                    <option value="left">Left</option>
+                </select>
+            </div>
+            <div class="field">
+                <label for="participant-alignment">Alineat participant</label>
+                <select id="participant-alignment" name="participant-alignment">
+                    <option value="center">Center</option>
+                    <option value="right">Right</option>
+                    <option value="left">Left</option>
+                </select>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>
