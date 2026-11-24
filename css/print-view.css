@@ -73,6 +73,7 @@
 
     #preview img {
         display: block !important;
+        visibility: hidden !important;
         width: var(--paper-width) !important;
         height: var(--paper-height) !important;
         max-height: var(--paper-height) !important;

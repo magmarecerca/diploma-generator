@@ -66,6 +66,12 @@ document.addEventListener('DOMContentLoaded', () => {
     subscribeToInputEvent('title-alignment', changeTextAlignment, title);
     subscribeToInputEvent('participant-alignment', changeTextAlignment, participant);
 
+    function changeTextColor(color, item) {
+        item.style.color = color;
+    }
+    subscribeToInputEvent('title-color', changeTextColor, title);
+    subscribeToInputEvent('participant-color', changeTextColor, participant);
+
     restoreItem('title', changeText, title);
     restoreItem('participant', changeText, participant);
     restoreItem('title-x', changeXPosition, title);
@@ -78,4 +84,6 @@ document.addEventListener('DOMContentLoaded', () => {
     restoreItem('participant-size', changeFontSize, participant);
     restoreItem('title-alignment', changeTextAlignment, title);
     restoreItem('participant-alignment', changeTextAlignment, participant);
+    restoreItem('title-color', changeTextAlignment, title);
+    restoreItem('participant-color', changeTextAlignment, participant);
 });
