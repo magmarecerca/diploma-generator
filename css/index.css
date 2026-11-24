@@ -206,6 +206,8 @@ footer a {
 
 #preview .text {
     position: absolute;
+    left: 0;
+    top: 0;
 }
 
 .modal {

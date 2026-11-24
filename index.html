@@ -5,6 +5,7 @@
     <meta http-equiv="content-language" content="en">
     <meta name="description" content="This is a generator for Exporecerca Jove's Diplomas.">
 
+    <script src="editor.js"></script>
 
     <link rel="stylesheet" type="text/css" href="css/index.css">
     <link rel="stylesheet" type="text/css" href="css/fontawesome.min.css">
@@ -47,70 +48,69 @@
         </div>
     </div>
     <div id="edit" class="column">
-        <form>
-            <div class="field">
-                <label for="title">Títol</label>
-                <input type="text" id="title" name="title">
-            </div>
-            <div class="field">
-                <label for="participant">Participant</label>
-                <input type="text" id="participant" name="participant">
-            </div>
+        <div class="field">
+            <label for="title">Títol</label>
+            <input type="text" id="title" name="title">
+        </div>
+        <div class="field">
+            <label for="participant">Participant</label>
+            <input type="text" id="participant" name="participant">
+        </div>
 
-            <hr>
-            <h3>Títol</h3>
-            <div class="field">
-                <label for="title-x">X</label>
-                <input type="range" id="title-x" name="title-x" min="0" max="100" value="0" step="0.1">
-            </div>
-            <div class="field">
-                <label for="title-y">Y</label>
-                <input type="range" id="title-y" name="title-y" min="0" max="100" value="0" step="0.1">
-            </div>
-            <div class="field">
-                <label for="title-alignment">Alineat</label>
-                <select id="title-alignment" name="title-alignment">
-                    <option value="center">Center</option>
-                    <option value="right">Right</option>
-                    <option value="left">Left</option>
-                </select>
-            </div>
-            <div class="field">
-                <label for="title-weight">Grossor text</label>
-                <input type="range" id="title-weight" name="title-weight" min="100" max="900" value="400" step="100">
-            </div>
-            <div class="field">
-                <label for="title-size">Tamany</label>
-                <input type="number" id="title-size" name="title-size" value="14" min="1">
-            </div>
+        <hr>
+        <h3>Títol</h3>
+        <div class="field">
+            <label for="title-x">X</label>
+            <input type="range" id="title-x" name="title-x" min="0" max="100" value="0" step="0.1">
+        </div>
+        <div class="field">
+            <label for="title-y">Y</label>
+            <input type="range" id="title-y" name="title-y" min="0" max="100" value="0" step="0.1">
+        </div>
+        <div class="field">
+            <label for="title-alignment">Alineat</label>
+            <select id="title-alignment" name="title-alignment">
+                <option value="left">Left</option>
+                <option value="center">Center</option>
+                <option value="right">Right</option>
+            </select>
+        </div>
+        <div class="field">
+            <label for="title-weight">Grossor text</label>
+            <input type="range" id="title-weight" name="title-weight" min="100" max="900" value="400" step="100">
+        </div>
+        <div class="field">
+            <label for="title-size">Tamany</label>
+            <input type="number" id="title-size" name="title-size" value="14" min="1">
+        </div>
 
-            <hr>
-            <h3>Participant</h3>
-            <div class="field">
-                <label for="participant-x">X</label>
-                <input type="range" id="participant-x" name="participant-x" min="0" max="100" value="0" step="0.1">
-            </div>
-            <div class="field">
-                <label for="participant-y">Y</label>
-                <input type="range" id="participant-y" name="participant-y" min="0" max="100" value="0" step="0.1">
-            </div>
-            <div class="field">
-                <label for="participant-alignment">Alineat</label>
-                <select id="participant-alignment" name="participant-alignment">
-                    <option value="center">Center</option>
-                    <option value="right">Right</option>
-                    <option value="left">Left</option>
-                </select>
-            </div>
-            <div class="field">
-                <label for="participant-weight">Grossor text</label>
-                <input type="range" id="participant-weight" name="participant-weight" min="100" max="900" value="400" step="100">
-            </div>
-            <div class="field">
-                <label for="participant-size">Tamany</label>
-                <input type="number" id="participant-size" name="participant-size" value="14" min="1">
-            </div>
-        </form>
+        <hr>
+        <h3>Participant</h3>
+        <div class="field">
+            <label for="participant-x">X</label>
+            <input type="range" id="participant-x" name="participant-x" min="0" max="100" value="0" step="0.1">
+        </div>
+        <div class="field">
+            <label for="participant-y">Y</label>
+            <input type="range" id="participant-y" name="participant-y" min="0" max="100" value="0" step="0.1">
+        </div>
+        <div class="field">
+            <label for="participant-alignment">Alineat</label>
+            <select id="participant-alignment" name="participant-alignment">
+                <option value="left">Left</option>
+                <option value="center">Center</option>
+                <option value="right">Right</option>
+            </select>
+        </div>
+        <div class="field">
+            <label for="participant-weight">Grossor text</label>
+            <input type="range" id="participant-weight" name="participant-weight" min="100" max="900" value="400"
+                   step="100">
+        </div>
+        <div class="field">
+            <label for="participant-size">Tamany</label>
+            <input type="number" id="participant-size" name="participant-size" value="14" min="1">
+        </div>
     </div>
 </div>
 </body>
