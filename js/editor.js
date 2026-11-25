@@ -158,6 +158,28 @@
             item.style.visibility = null;
     }
 
+    function changeFont(inputUrl, item, styleId) {
+        const url = inputUrl.trim();
+
+        const style = document.getElementById(styleId);
+
+        if (!url) {
+            style.textContent = "";
+            item.style.fontFamily = "";
+            return;
+        }
+
+        style.textContent = `@import url("${url}");`;
+
+        // Extract font family from Google Fonts URL
+        const family = new URL(url).searchParams
+            .get("family")
+            .split(":")[0]
+            .replace(/\+/g, " ");
+
+        item.style.fontFamily = `"${family}", sans-serif`;
+    }
+
     subscribeToInputEvent('title', changeText, title);
     subscribeToMultiInputEvent('.participant-entry input', changeText, participant);
 
@@ -182,6 +204,9 @@
     subscribeToInputEvent('title-width', changeTextWidth, title);
     subscribeToInputEvent('participant-width', changeTextWidth, participant);
 
+    subscribeToInputEvent('title-font', (url, item) => changeFont(url, item, 'title-font-style'), title);
+    subscribeToInputEvent('participant-font', (url, item) => changeFont(url, item, 'participant-font-style'), participant);
+
     subscribeToCheckboxEvent('print-image', printImage, image);
 
     function restoreItems() {
@@ -201,6 +226,8 @@
         restoreItem('participant-color', changeTextColor, participant);
         restoreItem('title-width', changeTextWidth, title);
         restoreItem('participant-width', changeTextWidth, participant);
+        restoreItem('title-font', (url, item) => changeFont(url, item, 'title-font-style'), title);
+        restoreItem('participant-font', (url, item) => changeFont(url, item, 'participant-font-style'), participant);
         restoreCheckbox('print-image', printImage, image);
     }
 

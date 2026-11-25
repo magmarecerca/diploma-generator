@@ -58,6 +58,13 @@
     font-style: italic;
     opacity: .5;
     font-size: 0.9em;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+#edit .field span a {
+    color: blue;
+    text-decoration: underline;
 }
 
 #edit input[type="text"],
