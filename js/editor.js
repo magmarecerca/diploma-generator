@@ -25,12 +25,22 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function restoreItem(id, func, item) {
+        if (Storehouse.getItem(localStorageNamespace, id) === undefined) {
+            const value = document.getElementById(id).value;
+            func(value, item);
+            return;
+        }
         const value = Storehouse.getItem(localStorageNamespace, id);
         document.getElementById(id).value = value;
         func(value, item);
     }
 
     function restoreCheckbox(id, func, item) {
+        if (Storehouse.getItem(localStorageNamespace, id) === undefined) {
+            const checked = document.getElementById(id).checked;
+            func(checked, item);
+            return;
+        }
         const checked = Storehouse.getItem(localStorageNamespace, id);
         document.getElementById(id).checked = checked;
         func(checked, item);
@@ -39,30 +49,35 @@ document.addEventListener('DOMContentLoaded', () => {
     function changeText(newText, item) {
         item.innerHTML = newText;
     }
+
     subscribeToInputEvent('title', changeText, title);
     subscribeToInputEvent('participant', changeText, participant);
 
     function changeXPosition(newXPosition, item) {
         item.style.left = `${newXPosition}%`;
     }
+
     subscribeToInputEvent('title-x', changeXPosition, title);
     subscribeToInputEvent('participant-x', changeXPosition, participant);
 
     function changeYPosition(newYPosition, item) {
         item.style.top = `${newYPosition}%`;
     }
+
     subscribeToInputEvent('title-y', changeYPosition, title);
     subscribeToInputEvent('participant-y', changeYPosition, participant);
 
     function changeFontWeight(newWeight, item) {
         item.style.fontWeight = newWeight;
     }
+
     subscribeToInputEvent('title-weight', changeFontWeight, title);
     subscribeToInputEvent('participant-weight', changeFontWeight, participant);
 
     function changeFontSize(fontSize, item) {
         item.style.fontSize = `${fontSize / 7}cqw`;
     }
+
     subscribeToInputEvent('title-size', changeFontSize, title);
     subscribeToInputEvent('participant-size', changeFontSize, participant);
 
@@ -70,23 +85,35 @@ document.addEventListener('DOMContentLoaded', () => {
         switch (alignment) {
             case 'left':
                 item.style.transform = 'translateX(0)';
+                item.style.textAlign = 'left';
                 break;
             case 'center':
                 item.style.transform = 'translateX(-50%)';
+                item.style.textAlign = 'center';
                 break;
             case 'right':
                 item.style.transform = 'translateX(-100%)';
+                item.style.textAlign = 'right';
                 break;
         }
     }
+
     subscribeToInputEvent('title-alignment', changeTextAlignment, title);
     subscribeToInputEvent('participant-alignment', changeTextAlignment, participant);
 
     function changeTextColor(color, item) {
         item.style.color = color;
     }
+
     subscribeToInputEvent('title-color', changeTextColor, title);
     subscribeToInputEvent('participant-color', changeTextColor, participant);
+
+    function changeTextWidth(width, item) {
+        item.style.width = `${width}%`;
+    }
+
+    subscribeToInputEvent('title-width', changeTextWidth, title);
+    subscribeToInputEvent('participant-width', changeTextWidth, participant);
 
     function printImage(visible, item) {
         if (visible)
@@ -94,6 +121,7 @@ document.addEventListener('DOMContentLoaded', () => {
         else
             item.style.visibility = null;
     }
+
     subscribeToCheckboxEvent('print-image', printImage, image);
 
     restoreItem('title', changeText, title);

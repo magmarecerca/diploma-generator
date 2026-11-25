@@ -214,6 +214,8 @@ footer a {
     left: 0;
     top: 0;
     line-height: 1;
+    white-space: pre-wrap;
+    word-wrap: break-word;
 }
 
 .modal {
