@@ -72,6 +72,8 @@
             const diploma = diplomaContainer().querySelector(".diploma-container");
             diploma.remove();
 
+            Editor.storeMultiItem(".participant-entry input")
+
             updateState();
         });
 

@@ -206,6 +206,7 @@
 
     window.Editor = window.Editor || {
         restoreItems: restoreItems,
+        storeMultiItem: storeMultiItem
     }
 
     document.addEventListener('DOMContentLoaded', restoreItems);
