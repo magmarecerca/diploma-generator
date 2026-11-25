@@ -78,11 +78,6 @@
 
     function restoreMultiItem(selector, func, items) {
         const elements = document.querySelectorAll(selector);
-        const storedSize = Storehouse.getItem(
-            localStorageNamespace,
-            `${selector}_size`
-        );
-
         const targets = items();
 
         elements.forEach((element, index) => {
