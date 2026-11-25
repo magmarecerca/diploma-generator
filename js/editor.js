@@ -1,21 +1,21 @@
 document.addEventListener('DOMContentLoaded', () => {
     const localStorageNamespace = 'org.magmarecerca.dev/diploma_generator';
 
-    const title = document.getElementById('project-title');
-    const participant = document.getElementById('project-participant');
-    const image = document.getElementById('preview-image');
+    const title = document.querySelectorAll('.text.project-title');
+    const participant = document.querySelectorAll('.text.project-participant');
+    const image = document.querySelectorAll('.preview-image');
 
     function subscribeToInputEvent(id, func, item) {
         document.getElementById(id).addEventListener('input', (evt) => {
             storeItem(id, evt.target.value);
-            return func(evt.target.value, item);
+            item.forEach(i => func(evt.target.value, i));
         });
     }
 
     function subscribeToCheckboxEvent(id, func, item) {
         document.getElementById(id).addEventListener('change', (evt) => {
             storeItem(id, evt.target.checked);
-            return func(evt.target.checked, item);
+            item.forEach(i => func(evt.target.checked, i));
         });
     }
 
@@ -27,23 +27,23 @@ document.addEventListener('DOMContentLoaded', () => {
     function restoreItem(id, func, item) {
         if (Storehouse.getItem(localStorageNamespace, id) === undefined) {
             const value = document.getElementById(id).value;
-            func(value, item);
+            item.forEach(i => func(value, i));
             return;
         }
         const value = Storehouse.getItem(localStorageNamespace, id);
         document.getElementById(id).value = value;
-        func(value, item);
+        item.forEach(i => func(value, i));
     }
 
     function restoreCheckbox(id, func, item) {
         if (Storehouse.getItem(localStorageNamespace, id) === undefined) {
             const checked = document.getElementById(id).checked;
-            func(checked, item);
+            item.forEach(i => func(checked, i));
             return;
         }
         const checked = Storehouse.getItem(localStorageNamespace, id);
         document.getElementById(id).checked = checked;
-        func(checked, item);
+        item.forEach(i => func(checked, i));
     }
 
     function changeText(newText, item) {
