@@ -274,3 +274,26 @@ input[type=file]::file-selector-button {
     color: white;
     background-color: var(--default-button-bg) !important;
 }
+
+#edit .field .font-entry {
+    display: flex;
+    gap: 5px;
+}
+
+#edit .field .font-entry .font-import {
+    padding: 10px;
+    transition-duration: 0.2s;
+
+    border: var(--default-form-border) solid 1px;
+    border-radius: 5px;
+    height: 40px;
+
+    margin: 10px 0 0 0;
+    gap: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    background-color: var(--magma-gray-bg);
+    color: #888888;
+}
