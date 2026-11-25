@@ -14,27 +14,26 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function subscribeToCheckboxEvent(id, func, item) {
         document.getElementById(id).addEventListener('change', (evt) => {
-            storeCheckbox(id, evt.target.checked);
+            storeItem(id, evt.target.checked);
             return func(evt.target.checked, item);
         });
     }
 
     function storeItem(id, value) {
-
-    }
-
-    function storeCheckbox(id, checked) {
-
+        let expiredAt = new Date(2099, 1, 1);
+        Storehouse.setItem(localStorageNamespace, id, value, expiredAt);
     }
 
     function restoreItem(id, func, item) {
-        const element = document.getElementById(id);
-        func(element.value, item);
+        const value = Storehouse.getItem(localStorageNamespace, id);
+        document.getElementById(id).value = value;
+        func(value, item);
     }
 
     function restoreCheckbox(id, func, item) {
-        const element = document.getElementById(id);
-        func(element.checked, item);
+        const checked = Storehouse.getItem(localStorageNamespace, id);
+        document.getElementById(id).checked = checked;
+        func(checked, item);
     }
 
     function changeText(newText, item) {
