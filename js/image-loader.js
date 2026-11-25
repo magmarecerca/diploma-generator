@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
         document.body.appendChild(input);
         input.type = 'file';
         input.accept = 'image/*';
+        input.style.display = 'none';
         input.onchange = (e) => {
             const file = e.target.files[0];
             if (file) {
@@ -27,6 +28,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
             document.body.removeChild(input); // Remove the input element after usage
         };
+        input.oncancel = () => {
+            document.body.removeChild(input); // Remove the input element after cancel
+        }
 
         input.click(); // Trigger file input click
     }

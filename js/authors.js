@@ -44,7 +44,6 @@
             localStorageNamespace,
             `${selector}_size`
         );
-        console.log(storedSize);
 
         for (let i = 0; i < storedSize - 1; i++)
             addDiploma();
