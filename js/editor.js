@@ -138,5 +138,7 @@ document.addEventListener('DOMContentLoaded', () => {
     restoreItem('participant-alignment', changeTextAlignment, participant);
     restoreItem('title-color', changeTextColor, title);
     restoreItem('participant-color', changeTextColor, participant);
+    restoreItem('title-width', changeTextWidth, title);
+    restoreItem('participant-width', changeTextWidth, participant);
     restoreCheckbox('print-image', printImage, image);
 });
