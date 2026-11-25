@@ -24,6 +24,7 @@
 
             if (index !== -1) {
                 func(evt.target.value, items()[index]);
+                storeMultiItem(selector);
             }
         });
     }
@@ -54,11 +55,37 @@
         items().forEach(i => func(value, i));
     }
 
-    function restoreMultiItem(selector, func, items) {
+    function storeMultiItem(selector) {
         const elements = document.querySelectorAll(selector);
+        const expiredAt = new Date(2099, 1, 1);
 
         elements.forEach((element, index) => {
-            const targets = items();
+            Storehouse.setItem(
+                localStorageNamespace,
+                `${selector}_${index}`,
+                element.value,
+                expiredAt
+            );
+        });
+    }
+
+    function restoreMultiItem(selector, func, items) {
+        const elements = document.querySelectorAll(selector);
+        const storedSize = Storehouse.getItem(
+            localStorageNamespace,
+            `${selector}_size`
+        );
+
+        const targets = items();
+
+        elements.forEach((element, index) => {
+            const id = `${selector}_${index}`;
+            const storedValue = Storehouse.getItem(localStorageNamespace, id);
+
+            if (storedValue !== undefined) {
+                element.value = storedValue;
+            }
+
             if (targets[index]) {
                 func(element.value, targets[index]);
             }
