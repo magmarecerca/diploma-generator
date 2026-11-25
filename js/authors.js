@@ -1,8 +1,10 @@
-
 document.addEventListener("DOMContentLoaded", () => {
     const container = document.getElementById("participants");
     const addButton = document.getElementById("add-participant");
-    const template = document.getElementById("empty-participant-template");
+    const inputTemplate = document.getElementById("empty-participant-template");
+
+    const diplomaContainer = document.getElementById("preview");
+    const diplomaTemplate = document.getElementById("diploma-template");
 
     const MIN_PARTICIPANTS = 1;
 
@@ -20,12 +22,19 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
+    function updateState() {
+        updateButtons();
+        Editor.restoreItems();
+    }
+
     addButton.addEventListener("click", () => {
-        const newEntry = template.content.cloneNode(true);
+        const newEntry = inputTemplate.content.cloneNode(true);
+        const newDiploma = diplomaTemplate.content.cloneNode(true);
 
         container.appendChild(newEntry);
+        diplomaContainer.appendChild(newDiploma);
 
-        updateButtons();
+        updateState();
     });
 
     container.addEventListener("click", (event) => {
@@ -41,9 +50,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const entry = button.closest(".participant-entry");
         entry.remove();
+        const diploma = diplomaContainer.querySelector(".diploma-container");
+        diploma.remove();
 
-        updateButtons();
+        updateState();
     });
 
-    updateButtons();
+    updateState();
 });

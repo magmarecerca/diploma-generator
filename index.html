@@ -52,6 +52,13 @@
             <div class="text project-participant">Participant</div>
         </div>
     </div>
+    <template id="diploma-template">
+        <div class="diploma-container">
+            <img class="preview-image" src="test-image.png" alt="Diploma Image Template">
+            <div class="text project-title">Title</div>
+            <div class="text project-participant">Participant</div>
+        </div>
+    </template>
     <div id="edit" class="column">
         <div class="field">
             <label for="title">Title</label>
@@ -92,9 +99,9 @@
 
         <hr>
         <div id="participants" class="field">
-            <label for="participant">Participant</label>
+            <label>Participant</label>
             <div class="participant-entry">
-                <input type="text" id="participant" name="participant">
+                <input type="text" name="participant">
                 <button class="remove"><i class="fa-solid fa-trash"></i></button>
             </div>
             <template id="empty-participant-template">
