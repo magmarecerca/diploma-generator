@@ -7,6 +7,7 @@
 
     <script type="text/javascript" src="js/storehouse.js"></script>
     <script type="text/javascript" src="js/editor.js"></script>
+    <script type="text/javascript" src="js/authors.js"></script>
 
     <link rel="stylesheet" type="text/css" href="css/index.css">
     <link rel="stylesheet" type="text/css" href="css/print-view.css">
@@ -90,9 +91,21 @@
         </div>
 
         <hr>
-        <div class="field">
+        <div id="participants" class="field">
             <label for="participant">Participant</label>
-            <input type="text" id="participant" name="participant">
+            <div class="participant-entry">
+                <input type="text" id="participant" name="participant">
+                <button class="remove"><i class="fa-solid fa-trash"></i></button>
+            </div>
+            <template id="empty-participant-template">
+                <div class="participant-entry">
+                    <input type="text" name="participant">
+                    <button class="remove"><i class="fa-solid fa-trash"></i></button>
+                </div>
+            </template>
+        </div>
+        <div class="field">
+            <button id="add-participant" class="add">Add participant</button>
         </div>
         <div class="field">
             <label for="participant-x">Horizontal offset</label>
@@ -125,7 +138,8 @@
         </div>
         <div class="field">
             <label for="participant-width">Max width</label>
-            <input type="range" id="participant-width" name="participant-width" min="0" max="100" value="100" step="0.1">
+            <input type="range" id="participant-width" name="participant-width" min="0" max="100" value="100"
+                   step="0.1">
         </div>
 
         <hr>
