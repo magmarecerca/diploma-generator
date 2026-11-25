@@ -67,6 +67,13 @@
                 expiredAt
             );
         });
+
+        Storehouse.setItem(
+            localStorageNamespace,
+            `${selector}_size`,
+            elements.length,
+            expiredAt
+        );
     }
 
     function restoreMultiItem(selector, func, items) {
