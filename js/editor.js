@@ -11,6 +11,12 @@ document.addEventListener('DOMContentLoaded', () => {
             item.forEach(i => func(evt.target.value, i));
         });
     }
+    function subscribeToMultiInputEvent(selector, func, item) {
+        // document.getElementById(id).addEventListener('input', (evt) => {
+        //     storeItem(id, evt.target.value);
+        //     item.forEach(i => func(evt.target.value, i));
+        // });
+    }
 
     function subscribeToCheckboxEvent(id, func, item) {
         document.getElementById(id).addEventListener('change', (evt) => {
@@ -35,6 +41,17 @@ document.addEventListener('DOMContentLoaded', () => {
         item.forEach(i => func(value, i));
     }
 
+    function restoreMultiItem(query, func, item) {
+        // if (Storehouse.getItem(localStorageNamespace, id) === undefined) {
+        //     const value = document.getElementById(id).value;
+        //     item.forEach(i => func(value, i));
+        //     return;
+        // }
+        // const value = Storehouse.getItem(localStorageNamespace, id);
+        // document.getElementById(id).value = value;
+        // item.forEach(i => func(value, i));
+    }
+
     function restoreCheckbox(id, func, item) {
         if (Storehouse.getItem(localStorageNamespace, id) === undefined) {
             const checked = document.getElementById(id).checked;
@@ -51,7 +68,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     subscribeToInputEvent('title', changeText, title);
-    subscribeToInputEvent('participant', changeText, participant);
+    subscribeToMultiInputEvent('.participant-entry .text', changeText, participant);
 
     function changeXPosition(newXPosition, item) {
         item.style.left = `${newXPosition}%`;
@@ -125,7 +142,7 @@ document.addEventListener('DOMContentLoaded', () => {
     subscribeToCheckboxEvent('print-image', printImage, image);
 
     restoreItem('title', changeText, title);
-    restoreItem('participant', changeText, participant);
+    restoreMultiItem('.participant-entry .text', changeText, participant);
     restoreItem('title-x', changeXPosition, title);
     restoreItem('participant-x', changeXPosition, participant);
     restoreItem('title-y', changeYPosition, title);
