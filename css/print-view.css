@@ -47,6 +47,7 @@
         border: none !important;
         break-after: avoid !important;
         page-break-after: avoid !important;
+        display: block !important;
     }
 
     #container {

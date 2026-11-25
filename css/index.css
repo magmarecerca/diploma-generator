@@ -194,6 +194,9 @@ footer a {
     margin-left: 24px;
     flex: 1;
     padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 
 #preview img {
