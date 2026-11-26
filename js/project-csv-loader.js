@@ -1,47 +1,77 @@
 document.addEventListener("DOMContentLoaded", () => {
     const loadButton = document.getElementById('projects');
     const standList = document.getElementById('project-stand');
-
     const title = document.getElementById('title');
 
-    let projects;
+    let projects = [];
 
-    loadButton.onchange = (e) => {
+    // Initialize Select2
+    $('#project-stand').select2({
+        placeholder: 'Select a stand',
+        allowClear: false,
+        width: '100%'
+    });
+
+    loadButton.addEventListener('change', (e) => {
         const file = e.target.files[0];
-        if (file) {
-            Papa.parse(file, {
-                header: true, complete: function (results) {
-                    projects = results.data;
-                    refreshStandList();
-                }, error: function (error) {
-                    console.error('Error parsing CSV:', error);
-                }
-            });
-        }
-    }
+
+        if (!file) return;
+
+        Papa.parse(file, {
+            header: true,
+            complete: (results) => {
+                projects = results.data;
+                refreshStandList();
+            },
+            error: (error) => {
+                console.error('Error parsing CSV:', error);
+            }
+        });
+    });
 
     function refreshStandList() {
-        const options = [...new Set(projects
-            .map(project => project.Stand)
-            .filter(value => value != null && value.trim() !== ""))];
+        const options = [...new Set(
+            projects
+                .map(project => project.Stand?.trim())
+                .filter(Boolean)
+        )];
 
-        standList.innerHTML = `
-            <option value="" disabled selected>Select an option</option>
-            ${options.map(value => `<option value="${value}">${value}</option>`).join("")}
-        `;
+        // Rebuild options
+        standList.replaceChildren(
+            ...options.map(value => new Option(value, value))
+        );
+
+        // Reset selection
+        standList.value = '';
+
+        // Notify Select2
+        $('#project-stand').val(null).trigger('change');
     }
 
-    standList.addEventListener("change", (e) => {
+    $('#project-stand').on('select2:select', function () {
+        standList.dispatchEvent(new Event('change', {
+            bubbles: true
+        }));
+    });
+
+    // Listen directly to the native select
+    standList.addEventListener('change', (e) => {
         const selectedValue = e.target.value;
 
         const matchingTuples = projects.filter(
-            tuple => tuple.Stand === selectedValue
+            tuple => tuple.Stand?.trim() === selectedValue
         );
 
+        if (!matchingTuples.length) return;
+
         title.value = matchingTuples[0].Title;
+
         title.dispatchEvent(new Event('input', {
             bubbles: true
         }));
-        Authors.setAuthors(matchingTuples.map(tuple => tuple.Participant));
+
+        Authors.setAuthors(
+            matchingTuples.map(tuple => tuple.Participant)
+        );
     });
 });

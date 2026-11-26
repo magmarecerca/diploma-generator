@@ -31,7 +31,7 @@
     }
 }
 
-#edit .field label {
+#edit label {
     font-weight: bold;
 }
 
@@ -54,7 +54,7 @@
     margin-left: 2px;
 }
 
-#edit .field span {
+#edit .field span:not(.select2):not(.select2 *) {
     font-style: italic;
     opacity: .5;
     font-size: 0.9em;
@@ -62,7 +62,7 @@
     word-wrap: break-word;
 }
 
-#edit .field span a {
+#edit .field span:not(.select2):not(.select2 *) a {
     color: blue;
     text-decoration: underline;
 }
@@ -85,6 +85,35 @@
 
     margin: 10px 0 0;
     font-family: var(--default-font-family), serif;
+}
+
+#edit .select2 .selection {
+    height: 40px;
+    display: block;
+}
+
+#edit .select2 .selection .select2-selection {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    background-color: var(--magma-gray-bg);
+    border: var(--default-form-border) solid 1px;
+    border-radius: 5px;
+}
+
+.select2-dropdown {
+    background-color: var(--magma-gray-bg);
+    border: var(--default-form-border) solid 1px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+#edit .select2 .selection .select2-selection__rendered {
+    flex: 1;
+}
+
+#edit .select2 .selection .select2-selection__arrow {
+    position: relative;
 }
 
 #edit input[type="color"] {
