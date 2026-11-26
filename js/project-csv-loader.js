@@ -2,6 +2,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const loadButton = document.getElementById('projects');
     const standList = document.getElementById('project-stand');
 
+    const title = document.getElementById('title');
+
     let projects;
 
     loadButton.onchange = (e) => {
@@ -18,16 +20,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    function containsOption(option) {
-        for (let i = 0; i < standList.options.length; i++) {
-            if (standList.options[i].value === option) {
-                return true;
-            }
-        }
-
-        return false;
-    }
-
     function refreshStandList() {
         const options = [...new Set(projects
             .map(project => project.Stand)
@@ -38,4 +30,18 @@ document.addEventListener("DOMContentLoaded", () => {
             ${options.map(value => `<option value="${value}">${value}</option>`).join("")}
         `;
     }
+
+    standList.addEventListener("change", (e) => {
+        const selectedValue = e.target.value;
+
+        const matchingTuples = projects.filter(
+            tuple => tuple.Stand === selectedValue
+        );
+
+        title.value = matchingTuples[0].Title;
+        title.dispatchEvent(new Event('input', {
+            bubbles: true
+        }));
+        Authors.setAuthors(matchingTuples.map(tuple => tuple.Participant));
+    });
 });

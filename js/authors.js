@@ -1,4 +1,4 @@
-(function() {
+(function () {
     const localStorageNamespace = 'org.magmarecerca.dev/diploma_generator';
 
     const container = () => document.getElementById("participants");
@@ -50,6 +50,25 @@
         updateState();
     }
 
+    function setAuthors(authors) {
+        container().innerHTML = "";
+        diplomaContainer().innerHTML = "";
+
+        authors.forEach(author => {
+            addDiploma();
+
+            const entry = getEntries().at(-1);
+            const input = entry.querySelector("input");
+
+            input.value = author;
+            input.dispatchEvent(new Event("input", {
+                bubbles: true
+            }));
+        });
+
+        updateState();
+    }
+
     document.addEventListener("DOMContentLoaded", () => {
         addButton().addEventListener("click", () => {
             addDiploma();
@@ -80,4 +99,8 @@
 
         updateState();
     });
+
+    window.Authors = window.Authors || {
+        setAuthors: setAuthors,
+    }
 })();
